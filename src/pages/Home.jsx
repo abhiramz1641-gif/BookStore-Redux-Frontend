@@ -6,6 +6,7 @@ import { faInstagram, faPinterestP, faXTwitter } from '@fortawesome/free-brands-
 import { Link } from 'react-router-dom';
 import { faBook, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { motion } from "motion/react"
 
 const Home = () => {
 
@@ -29,7 +30,7 @@ const Home = () => {
             </div>
 
 
-            <div id='bod' className=' my-10 mx-10 rounded-2xl py-5'>
+            <motion.div initial={{ scale: 0 }} transition={{duration:.8}} animate={{ scale: 1}} id='bod' className=' my-10 mx-10 rounded-2xl py-5'>
                 <div className=' text-lg flex flex-wrap justify-center items-center gap-3 md:gap-10'>
                     <Link to={'/books'}><button className=' but px-4 py-1 rounded-2xl'><span id='db' className=' font-semibold' ><FontAwesomeIcon icon={faBook} /> Books</span></button></Link>
                     <Link to={'/fav'}><button className=' but px-4 py-1 rounded-2xl'><span id='db' className=' font-semibold' ><FontAwesomeIcon icon={faHeart} />Favourites</span><span id='dbb' className=' px-1.5 ms-1 rounded-2xl p-0.5 text-white text-sm'>{fav.length}</span></button></Link>
@@ -57,7 +58,7 @@ const Home = () => {
 
                 </div>
 
-            </div>
+            </motion.div>
 
 
         </div>
