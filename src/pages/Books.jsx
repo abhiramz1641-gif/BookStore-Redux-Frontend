@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { faBook, faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { addToFav } from '../redux/slices/Favourites'
 import { addToCart } from '../redux/slices/CartSlice'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Books = () => {
 
@@ -26,10 +27,30 @@ const Books = () => {
 
         const truth = fav.find(item => item.id == book.id)
         if (truth) {
-            alert("Book already added")
+            toast.error('Book already added.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
         }
         else {
-            alert("Book Added To Favourites...")
+            toast.success('Book Added to Favourites.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
             dispatch(addToFav(book))
 
         }
@@ -41,10 +62,33 @@ const Books = () => {
         const existingBook = cart.find(item => item.id == book.id)
 
         if (existingBook) {
-            alert("Book Quantity Incremented...")
+            // alert("Book Quantity Incremented...")
+            toast.success('Book Quantity Incremented.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
+
         }
         else {
-            alert("Book Added to Cart...")
+            toast.success('Book Added to Cart.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
+            // alert("Book Added to Cart...")
 
         }
         dispatch(addToCart(book))
@@ -60,6 +104,7 @@ const Books = () => {
 
     return (
         <div id='main' className=' h-auto pb-10'>
+            < Toaster position="top-center" reverseOrder={false} />
             <div className='w-full grid grid-cols-2'>
                 <div className=' ps-5'>
                     <Link to={'/'}><img className='w-20' src="./images/logo.png" alt="" /></Link>

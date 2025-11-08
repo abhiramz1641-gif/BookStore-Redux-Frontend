@@ -8,6 +8,7 @@ import { addToCart } from '../redux/slices/CartSlice'
 import { fetchBook } from '../redux/slices/bookSlice'
 import { Link } from 'react-router-dom'
 import { addToFav, removeFav } from '../redux/slices/Favourites'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Favourites = () => {
 
@@ -28,10 +29,33 @@ const Favourites = () => {
         const existingBook = cart.find(item => item.id == book.id)
 
         if (existingBook) {
-            alert("Book Quantity Incremented...")
+            // alert("Book Quantity Incremented...")
+            toast.success('Book Quantity Incremented.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
+
         }
         else {
-            alert("Book Added to Cart...")
+            toast.success('Book Added to Cart.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
+            // alert("Book Added to Cart...")
 
         }
         dispatch(addToCart(book))
@@ -43,6 +67,8 @@ const Favourites = () => {
 
     return (
         <div id='main' className=' h-auto pb-8'>
+            < Toaster position="top-center" reverseOrder={false} />
+
             <div className='w-full grid grid-cols-2'>
                 <div className=' ps-5'>
                     <Link to={'/'}><img className='w-20' src="./images/logo.png" alt="" /></Link>

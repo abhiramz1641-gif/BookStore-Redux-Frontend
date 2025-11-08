@@ -9,6 +9,7 @@ import { addToFav } from '../redux/slices/Favourites'
 import { addToCart, checkOut, decrementQ, incrementQ, removeBook } from '../redux/slices/CartSlice'
 import { fetchBook } from '../redux/slices/bookSlice'
 import { icon } from '@fortawesome/fontawesome-svg-core'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Cart = () => {
 
@@ -30,7 +31,17 @@ const Cart = () => {
     const handleDec = (data) => {
 
         if (data.q == 1) {
-            alert("Minimum 1 product required Or you could remove book")
+            toast.error('Minimum 1 Required.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                iconTheme: {
+                    primary: '#2C1810',
+                    secondary: '#f8f3ee',
+                },
+            });
         } else {
             dispatch(decrementQ(data))
         }
@@ -39,9 +50,16 @@ const Cart = () => {
 
     const checkOutt = () => {
 
-        alert("Thankyou for Shopping")
         dispatch(checkOut())
         nav('/books')
+        toast('Thankyou for shopping.', {
+                style: {
+                    border: '1px solid #2C1810',
+                    padding: '16px',
+                    color: '#2C1810',
+                },
+                icon:'🙏🏻'
+        });
 
     }
 
@@ -64,6 +82,8 @@ const Cart = () => {
 
     return (
         <div id='main' className=' h-auto pb-8'>
+            < Toaster position="top-center" reverseOrder={false} />
+
             <div className='w-full grid grid-cols-2'>
                 <div className=' ps-5'>
                     <Link to={'/'}><img className='w-20' src="./images/logo.png" alt="" /></Link>
