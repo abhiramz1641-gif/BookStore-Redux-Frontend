@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+
+#main {
+  /* background-color: #daa63d;
+  background-color: #2C1810;
+  background-color: #f8f3ee; */
+  background-color: #f3e5d0;
+  /* height: auto;
+  padding-bottom: 50px; */
+}
+
+#bod{
+  height: auto;
+  background-color: #f8f3ee;
+}
+
+#db {
+  color: #2C1810;
+}
+
+#dbb{
+  background: #2C1810;
+}
+
+#he {
+  font-family: "Libre Caslon Text", serif;
+
+}
+
+#pa {
+  font-family: "Montserrat", sans-serif;
+}
+
+#card{
+  background-color: #dbb873;
+}
+
+.but:hover{
+  background-color: #dbb873 ;
+  color: white;
+}
+
+
+
+
